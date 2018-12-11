@@ -8,20 +8,20 @@ rust_library(
 
 # Apparently need this extra wrapper to setup _solib_k8 (or put the .so into runfiles at all)
 cc_library(
-    name = "cwrapper",
-    srcs = [":rusty"]
+    name = "c_wrapper",
+    srcs = [":rusty"],
 )
 
 # py_* rules expect a py provider, so more wrapping.
 # See https://github.com/bazelbuild/bazel/issues/1475 for the latest.
 py_library(
-    name = "wrapper",
-    data = [":cwrapper"],
+    name = "py_wrapper",
+    data = ["c_wrapper"],
     imports = ['.']
 )
 
 py_test(
     name = "main",
     srcs = ["main.py"],
-    deps = [":wrapper"],
+    deps = [":py_wrapper"],
 )

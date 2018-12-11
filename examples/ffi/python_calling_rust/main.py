@@ -1,15 +1,11 @@
 import unittest
 
-from examples.ffi.python_calling_rust.magic import rust_lib
-
-
-class Rusty:
-    get_number = rust_lib.my_favorite_number
+from examples.ffi.python_calling_rust.magic import rusty
 
 
 class TestFFI(unittest.TestCase):
     def test_number(self):
-        self.assertEquals(Rusty.get_number(), 4)
+        self.assertEquals(rusty.my_favorite_number(), 4)
 
 
 if __name__ == "__main__":

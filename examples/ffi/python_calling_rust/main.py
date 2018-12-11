@@ -14,6 +14,7 @@ from ctypes import cdll
 
 rusty = cdll.LoadLibrary(
         # @TODO This cannot possibly be the The Right Way to do this.
+        # And needs to pick file extension per platform.
         '_solib_k8/_U@examples_S_Sffi_Spython_Ucalling_Urust_Ccwrapper___Uexternal_Sexamples_Sffi_Spython_Ucalling_Urust/librusty.so')
 
 get_number = rusty.my_favorite_number
